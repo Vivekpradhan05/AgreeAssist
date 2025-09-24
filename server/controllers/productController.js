@@ -44,6 +44,7 @@ export const productList = async ( req,res)=>{
 export const productById = async ( req,res)=>{
     try{
             const { id } = req.body
+         //    const {id} = req.user.id;
             const product = await Product.findById(id)
             res.json({success:true, product})
 
@@ -57,7 +58,9 @@ export const productById = async ( req,res)=>{
 // Get product inStock : /api/product/stock
 export const changeStock = async ( req,res)=>{
       try{
-          const { id, inStock } = req.body
+      //   const {id} = req.user.id;
+           const { id, inStock } = req.body
+        //  const {  inStock } = req.body
           await Product.findByIdAndUpdate(id, {inStock})
           res.json({success:true, message: "Stock Updated"})
 
